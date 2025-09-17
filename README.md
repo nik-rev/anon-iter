@@ -10,7 +10,7 @@
 being less general-purpose but solving the most common use-case of this pattern (`impl Iterator`),
 without relying on macros - leading to much faster compile times and simpler syntax.
 
-It does this by providing generic wrapper types like [`AnonIter2`]
+It does this by providing generic wrapper types like `AnonIter2`
 to allow to return different types of iterators
 from a function that returns `-> impl Iterator`.
 
@@ -23,7 +23,7 @@ Add this to your `Cargo.toml`:
 anon_iter = "0.1"
 ```
 
-Wrap each iterator in [`AnonIter2`] to return 2 different iterators from the same function:
+Wrap each iterator in `AnonIter2` to return 2 different iterators from the same function:
 
 ```rust
 use anon_iter::AnonIter2;
