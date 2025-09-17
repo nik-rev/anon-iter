@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "anon-iter"
+name = "anon_iter"
 version = "0.1.0"
