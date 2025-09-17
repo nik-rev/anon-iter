@@ -7,7 +7,7 @@ rust-version = "1.50"
 authors = ["Nik Revenco <pm@nikrev.com>"]
 repository = "https://github.com/nik-rev/anon-iter"
 keywords = ["enum"]
-categories = ["Data structures", "Rust patterns"]
+categories = ["data-structures", "rust-patterns"]
 license = "MIT OR Apache-2.0"
 
 [dependencies]
