@@ -44,3 +44,35 @@ do extra nesting (e.g. `Either::Left(Either::Right(Either::Left(my_iter)))`). Wi
 
 Additionally, `anon_iter` makes code more readable because it may not be instantly obvious that we are using `Either` for this purpose, but with `AnonEnum`
 the intent is apparent.
+
+# An even simpler approach
+
+If you just want to do this once without depending on this crate, copy-paste this into your project:
+
+```rust
+/// Wraps 2 `impl Iterator` which may be of different types
+///
+/// Functions returning `-> impl Iterator` must have the same return type
+/// from all branches, but this is overly restrictive.
+///
+/// We may want to return 2 or more different iterators from the same function,
+/// and this type allows that by wrapping each unique iterator in a variant of
+/// this enum. This enum implements `Iterator` when `I1` and `I2` are both `Iterator`
+enum AnonIter<T, I1: Iterator<Item = T>, I2: Iterator<Item = T>> {
+    /// The first `impl Iterator`
+    I1(I1),
+    /// The second `impl Iterator`
+    I2(I2),
+}
+
+impl<T, I1: Iterator<Item = T>, I2: Iterator<Item = T>> Iterator for AnonIter<T, I1, I2> {
+    type Item = T;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        match self {
+            AnonIter::I1(i1) => i1.next(),
+            AnonIter::I2(i2) => i2.next(),
+        }
+    }
+}
+```
