@@ -7,8 +7,8 @@
 [![githbu](https://img.shields.io/github/stars/nik-rev/anon_iter)]
 
 `anon_iter` is a much lighter alternative to the [`auto_enums`](https://crates.io/crates/auto_enums) crate,
-being less general-purpose but solving the most common use-case of this pattern, without relying on macros
-- leading to much faster compile times and simpler syntax.
+being less general-purpose but solving the most common use-case of this pattern (`impl Iteraotr`),
+without relying on macros - leading to much faster compile times and simpler syntax.
 
 It does this by providing generic wrapper types like [`AnonIter2`]
 to allow to return different types of iterators

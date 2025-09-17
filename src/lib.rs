@@ -1,6 +1,6 @@
 //! `anon_iter` is a much lighter alternative to the [`auto_enums`](https://crates.io/crates/auto_enums) crate,
-//! being less general-purpose but solving the most common use-case of this pattern, without relying on macros
-//! - leading to much faster compile times and simpler syntax.
+//! being less general-purpose but solving the most common use-case of this pattern (`impl Iterator`),
+//! without relying on macros - leading to much faster compile times and simpler syntax.
 //!
 //! It does this by providing generic wrapper types like [`AnonIter2`]
 //! to allow to return different types of iterators
@@ -15,7 +15,7 @@
 //! anon_iter = "0.1"
 //! ```
 //!
-//! Wrap each iteratir in [`AnonIter2`] to return 2 different iterators from the same function:
+//! Wrap each iterator in [`AnonIter2`] to return 2 different iterators from the same function:
 //!
 //! ```rust
 //! use anon_iter::AnonIter2;
@@ -29,10 +29,12 @@
 //! ```
 //!
 //! The crate [`Either`](https://docs.rs/either/latest/either/) allows similar functionality, as it too implements `Iterator` when
-//! its type parameters are both `Iterator`. However, this breaks down when you want to return 3 or more `Iterator`s because you now have to
+//! its type parameters are both `Iterator`.
+//!
+//! But this breaks down when you want to return 3 or more `Iterator`s because you now have to
 //! do extra nesting (e.g. `Either::Left(Either::Right(Either::Left(my_iter)))`). With `anon_iter`, it's just `AnonIter8::I3(my_iter)`.
 //!
-//! Also, it makes code more readable because it may not be instantly obvious that we are using `Either` for this purpose, but with `AnonEnum`
+//! Additionally, `anon_iter` makes code more readable because it may not be instantly obvious that we are using `Either` for this purpose, but with `AnonEnum`
 //! the intent is apparent.
 #![no_std]
 
