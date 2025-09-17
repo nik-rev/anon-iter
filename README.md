@@ -57,7 +57,7 @@ If you just want to do this once without depending on this crate, copy-paste thi
 ///
 /// We may want to return 2 or more different iterators from the same function,
 /// and this type allows that by wrapping each unique iterator in a variant of
-/// this enum. This enum implements `Iterator` when `I1` and `I2` are both `Iterator`
+/// this enum.
 enum AnonIter<T, I1: Iterator<Item = T>, I2: Iterator<Item = T>> {
     /// The first `impl Iterator`
     I1(I1),
